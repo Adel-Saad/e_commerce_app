@@ -1,8 +1,9 @@
 class Product {
-  String pName, pPrice, pDescription, pLocation, pcategory;
+  String pID, pName, pPrice, pDescription, pLocation, pcategory;
 
   Product(
       {this.pDescription,
+      this.pID,
       this.pLocation,
       this.pName,
       this.pPrice,

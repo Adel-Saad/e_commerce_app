@@ -24,4 +24,8 @@ class Store {
   Stream<QuerySnapshot> loadProducts() {
     return _firestore.collection(kProductCollection).snapshots();
   }
+
+  deleteProduct(documentID) async {
+    await _firestore.collection(kProductCollection).doc(documentID).delete();
+  }
 }

@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:new_e_commerce_app/Providers/admin_mode.dart';
 import 'package:new_e_commerce_app/Screens/add_products.dart';
 import 'package:new_e_commerce_app/Screens/admin_home.dart';
-import 'package:new_e_commerce_app/Screens/edit_products.dart';
+import 'package:new_e_commerce_app/Screens/manage_product.dart';
 import 'package:new_e_commerce_app/Screens/home_page.dart';
 import 'package:new_e_commerce_app/Screens/view_orders.dart';
 import 'package:provider/provider.dart';
 import 'package:new_e_commerce_app/Providers/model_hud.dart';
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
+import 'Screens/edit_product.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,8 +42,9 @@ class MyApp extends StatelessWidget {
         SignUpScreen.id: (context) => SignUpScreen(),
         AdminHome.id: (context) => AdminHome(),
         AddProducts.id: (context) => AddProducts(),
-        EditProducts.id: (context) => EditProducts(),
+        ManageProducts.id: (context) => ManageProducts(),
         ViewOrders.id: (context) => ViewOrders(),
+        EditProduct.id: (context) => EditProduct(),
       },
     );
   }
