@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_e_commerce_app/Models/product.dart';
 import 'package:new_e_commerce_app/Providers/cart_item.dart';
+import 'package:new_e_commerce_app/Screens/User/cart_screen.dart';
 import 'package:new_e_commerce_app/constants.dart';
 import 'package:badges/badges.dart';
 import 'package:provider/provider.dart';
@@ -56,7 +57,11 @@ class _ProductInfoState extends State<ProductInfo> {
                     ),
                     Badge(
                       position: BadgePosition(top: -15, end: -15),
-                      child: Icon(Icons.shopping_cart),
+                      child: IconButton(
+                        icon: Icon(Icons.shopping_cart),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, CartScreen.id),
+                      ),
                       toAnimate: true,
                       badgeContent: Text('${cartItem.products.length}',
                           style: TextStyle(color: Colors.white)),
