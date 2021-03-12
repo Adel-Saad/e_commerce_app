@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_e_commerce_app/Screens/add_products.dart';
-import 'package:new_e_commerce_app/Screens/manage_product.dart';
-import 'package:new_e_commerce_app/Screens/view_orders.dart';
+import 'package:new_e_commerce_app/Screens/Admin/add_products.dart';
+import 'package:new_e_commerce_app/Screens/Admin/manage_product.dart';
+import 'package:new_e_commerce_app/Screens/Admin/view_orders.dart';
 import 'package:new_e_commerce_app/constants.dart';
 
 class AdminHome extends StatefulWidget {

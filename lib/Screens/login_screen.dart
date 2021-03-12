@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:new_e_commerce_app/Providers/admin_mode.dart';
 import 'package:new_e_commerce_app/Providers/model_hud.dart';
-import 'package:new_e_commerce_app/Screens/admin_home.dart';
-import 'package:new_e_commerce_app/Screens/home_page.dart';
+import 'package:new_e_commerce_app/Screens/Admin/admin_home.dart';
+import 'package:new_e_commerce_app/Screens/User/home_page.dart';
 import 'package:new_e_commerce_app/Screens/signup_screen.dart';
 import 'package:new_e_commerce_app/Services/auth.dart';
 import 'package:new_e_commerce_app/Widgets/custom_logo.dart';
@@ -136,7 +136,7 @@ class LogInScreen extends StatelessWidget {
       if (adminMode.isAdmin) {
         if (_password == adminPassword) {
           try {
-            await _auth.signIn(_email, _password);
+            await _auth.signIn(_email.trim(), _password.trim());
             modelHud.changeIsLoading(false);
             Navigator.pushNamed(context, AdminHome.id);
           } on FirebaseAuthException catch (e) {

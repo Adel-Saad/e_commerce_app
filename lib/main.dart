@@ -1,16 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:new_e_commerce_app/Providers/admin_mode.dart';
-import 'package:new_e_commerce_app/Screens/add_products.dart';
-import 'package:new_e_commerce_app/Screens/admin_home.dart';
-import 'package:new_e_commerce_app/Screens/manage_product.dart';
-import 'package:new_e_commerce_app/Screens/home_page.dart';
-import 'package:new_e_commerce_app/Screens/view_orders.dart';
+import 'package:new_e_commerce_app/Providers/cart_item.dart';
+import 'package:new_e_commerce_app/Screens/Admin/add_products.dart';
+import 'package:new_e_commerce_app/Screens/Admin/admin_home.dart';
+import 'package:new_e_commerce_app/Screens/Admin/edit_product.dart';
+import 'package:new_e_commerce_app/Screens/Admin/manage_product.dart';
+import 'package:new_e_commerce_app/Screens/Admin/view_orders.dart';
+import 'package:new_e_commerce_app/Screens/User/home_page.dart';
+import 'package:new_e_commerce_app/Screens/User/product_info.dart';
 import 'package:provider/provider.dart';
 import 'package:new_e_commerce_app/Providers/model_hud.dart';
+import 'Screens/User/cart_screen.dart';
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
-import 'Screens/edit_product.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +26,9 @@ main() async {
         ),
         ChangeNotifierProvider<AdminMode>(
           create: (context) => AdminMode(),
+        ),
+        ChangeNotifierProvider<CartItem>(
+          create: (context) => CartItem(),
         ),
       ],
       child: MyApp(),
@@ -45,6 +51,8 @@ class MyApp extends StatelessWidget {
         ManageProducts.id: (context) => ManageProducts(),
         ViewOrders.id: (context) => ViewOrders(),
         EditProduct.id: (context) => EditProduct(),
+        ProductInfo.id: (context) => ProductInfo(),
+        CartScreen.id: (context) => CartScreen(),
       },
     );
   }

@@ -5,19 +5,17 @@ import 'package:new_e_commerce_app/Providers/model_hud.dart';
 import 'package:new_e_commerce_app/Services/store.dart';
 import 'package:new_e_commerce_app/constants.dart';
 import 'package:provider/provider.dart';
-import 'package:new_e_commerce_app/Screens/edit_product.dart';
-import 'package:new_e_commerce_app/Widgets/custom_pop_up_menu.dart';
 
-class ManageProducts extends StatefulWidget {
-  static String id = 'manageProduct';
+class EditProducts extends StatefulWidget {
+  static String id = 'EditProducts';
   @override
-  _ManageProductsState createState() => _ManageProductsState();
+  _EditProductsState createState() => _EditProductsState();
 }
 
 // ========================= STATE CLASS =======================================
-class _ManageProductsState extends State<ManageProducts> {
+class _EditProductsState extends State<EditProducts> {
 // props ...
-
+  static String id = 'edit products';
   final _store = Store();
 
   @override
@@ -38,7 +36,6 @@ class _ManageProductsState extends State<ManageProducts> {
             for (var doc in snapshot.data.docs) {
               var data = doc.data();
               products.add(Product(
-                  pID: doc.id,
                   pDescription: data[kProductDescription],
                   pLocation: data[kProductLocation],
                   pName: data[kProductName],
@@ -58,22 +55,16 @@ class _ManageProductsState extends State<ManageProducts> {
                     double dy = details.globalPosition.dy;
                     double dx2 = MediaQuery.of(context).size.width - dx;
                     double dy2 = MediaQuery.of(context).size.width - dy;
-
                     return await showMenu(
                         context: context,
                         position: RelativeRect.fromLTRB(dx, dy, dx2, dy2),
                         items: [
-                          MyPopupMenuItem(
-                            onClick: () {
-                              Navigator.pushNamed(context, EditProduct.id);
-                            },
+                          MyPopUpMenuItem(
+                            onClick: () {},
                             child: Text('Edit'),
                           ),
-                          MyPopupMenuItem(
-                            onClick: () {
-                              _store.deleteProduct(products[index].pID);
-                              Navigator.pop(context);
-                            },
+                          MyPopUpMenuItem(
+                            onClick: () {},
                             child: Text('Delete'),
                           ),
                         ]);
@@ -128,3 +119,22 @@ class _ManageProductsState extends State<ManageProducts> {
 }
 
 //  ****************** TEST ****************
+
+class MyPopUpMenuItem<T> extends PopupMenuItem<T> {
+  final Widget child;
+  final Function onClick;
+  MyPopUpMenuItem({@required this.child, @required this.onClick})
+      : super(child: child);
+  @override
+  PopupMenuItemState<T, PopupMenuItem<T>> createState() {
+    return MyPopUpmentItemState();
+  }
+}
+
+class MyPopUpmentItemState<T, PopupMenuItem>
+    extends PopupMenuItemState<T, MyPopUpMenuItem<T>> {
+  @override
+  void handleTap() {
+    widget.onClick;
+  }
+}

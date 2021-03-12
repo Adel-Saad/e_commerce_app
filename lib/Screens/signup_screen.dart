@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:new_e_commerce_app/Providers/model_hud.dart';
-import 'package:new_e_commerce_app/Screens/home_page.dart';
+import 'package:new_e_commerce_app/Screens/User/home_page.dart';
 import 'package:new_e_commerce_app/Widgets/custom_logo.dart';
 import 'package:new_e_commerce_app/Widgets/custom_text_field.dart';
 import 'package:new_e_commerce_app/Services/auth.dart';
@@ -76,7 +76,7 @@ class SignUpScreen extends StatelessWidget {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
                       try {
-                        await _auth.signUp(_email, _password);
+                        await _auth.signUp(_email.trim(), _password.trim());
                         modelHud.changeIsLoading(false);
                         Navigator.pushNamed(context, HomePage.id);
                       } on FirebaseAuthException catch (e) {

@@ -17,10 +17,6 @@ class Store {
     });
   }
 
-  // Stream<QuerySnapshot> loadProduct() {
-  //   return _firestore.collection(kProductCollection).snapshots();
-  // }
-
   Stream<QuerySnapshot> loadProducts() {
     return _firestore.collection(kProductCollection).snapshots();
   }
@@ -28,4 +24,10 @@ class Store {
   deleteProduct(documentID) async {
     await _firestore.collection(kProductCollection).doc(documentID).delete();
   }
+
+  editProduct(productID, data) async {
+    await _firestore.collection(kProductCollection).doc(productID).update(data);
+  }
+
+// ******************* CLASS END *****************************
 }
