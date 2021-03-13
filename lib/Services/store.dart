@@ -29,5 +29,19 @@ class Store {
     await _firestore.collection(kProductCollection).doc(productID).update(data);
   }
 
+  storeOrders(data, List<Product> products) {
+    var documentRef = _firestore.collection(kOrdersCollection).doc();
+    documentRef.set(data);
+
+    for (var product in products) {
+      documentRef.collection(kOrderDetailsCollection).doc().set({
+        kProductName: product.pName,
+        kProductPrice: product.pPrice,
+        kProductLocation: product.pLocation,
+        kProductQuantity: product.quantity,
+      });
+    }
+  }
+
 // ******************* CLASS END *****************************
 }

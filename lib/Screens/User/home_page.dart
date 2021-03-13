@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:new_e_commerce_app/Models/product.dart';
 import 'package:new_e_commerce_app/Providers/cart_item.dart';
+import 'package:new_e_commerce_app/Screens/User/cart_screen.dart';
 import 'package:new_e_commerce_app/Services/store.dart';
 import 'package:new_e_commerce_app/constants.dart';
 import 'package:new_e_commerce_app/Widgets/custom_tab_view.dart';
@@ -106,7 +107,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Badge(
                     position: BadgePosition(top: -15, end: -15),
-                    child: Icon(Icons.shopping_cart),
+                    child: IconButton(
+                      icon: Icon(Icons.shopping_cart),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, CartScreen.id),
+                    ),
                     toAnimate: true,
                     badgeContent: Text('${cartItem.products.length}',
                         style: TextStyle(color: Colors.white)),

@@ -79,7 +79,7 @@ class LogInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an Account ?.',
+                    'Don\'t have an Account ?..',
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   GestureDetector(
@@ -136,7 +136,7 @@ class LogInScreen extends StatelessWidget {
       if (adminMode.isAdmin) {
         if (_password == adminPassword) {
           try {
-            await _auth.signIn(_email.trim(), _password.trim());
+            await _auth.signIn(_email, _password);
             modelHud.changeIsLoading(false);
             Navigator.pushNamed(context, AdminHome.id);
           } on FirebaseAuthException catch (e) {

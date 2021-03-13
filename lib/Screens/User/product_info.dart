@@ -56,7 +56,7 @@ class _ProductInfoState extends State<ProductInfo> {
                       onPressed: () => Navigator.pop(context),
                     ),
                     Badge(
-                      position: BadgePosition(top: -15, end: -15),
+                      position: BadgePosition(top: -3, end: -2),
                       child: IconButton(
                         icon: Icon(Icons.shopping_cart),
                         onPressed: () =>
@@ -91,7 +91,7 @@ class _ProductInfoState extends State<ProductInfo> {
                               Expanded(
                                 child: Text(
                                   product.pName,
-                                  style: TextStyle(fontSize: 18),
+                                  style: TextStyle(fontSize: 16),
                                 ),
                               ),
                               ClipOval(
@@ -114,7 +114,7 @@ class _ProductInfoState extends State<ProductInfo> {
                               Expanded(
                                 child: Text(
                                   product.pDescription,
-                                  style: TextStyle(fontSize: 18),
+                                  style: TextStyle(fontSize: 16),
                                 ),
                               ),
                               Padding(
@@ -135,7 +135,7 @@ class _ProductInfoState extends State<ProductInfo> {
                               Expanded(
                                 child: Text(
                                   '${product.pPrice} \$',
-                                  style: TextStyle(fontSize: 18),
+                                  style: TextStyle(fontSize: 16),
                                 ),
                               ),
                               ClipOval(

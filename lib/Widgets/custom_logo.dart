@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_e_commerce_app/constants.dart';
 
 class CustomLogo extends StatelessWidget {
   const CustomLogo({
@@ -17,8 +18,10 @@ class CustomLogo extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Image(
-              image: AssetImage('assets/icons/icon.png'),
+            CircleAvatar(
+              backgroundColor: kMainColor,
+              radius: 45,
+              backgroundImage: AssetImage('assets/icons/icon.png'),
             ),
             Positioned(
               bottom: 0,
