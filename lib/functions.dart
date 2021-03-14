@@ -90,7 +90,7 @@ void showCustommenu(
       ]);
 }
 
-var totalPrice;
+int totalPrice;
 showCustomDialog(List<Product> products, BuildContext context) async {
   getTotalPrice() {
     var totalPrice = 0;
@@ -102,13 +102,19 @@ showCustomDialog(List<Product> products, BuildContext context) async {
 
   var address;
   Store _store = Store();
-  var price = getTotalPrice();
+  int totalPrice = getTotalPrice();
   var myAlertDialoge = AlertDialog(
     title: Text(
-      'Total Price : ${price} \$',
+      'Total Price : ${totalPrice} \$',
       style: TextStyle(fontSize: 18),
     ),
     actions: [
+      MaterialButton(
+        child: Text('Cxl'),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
       MaterialButton(
         child: Text('Confirm'),
         onPressed: () {
@@ -123,7 +129,13 @@ showCustomDialog(List<Product> products, BuildContext context) async {
                 content: Text('Ordered Successfully'),
               ),
             );
-          } catch (e) {}
+          } catch (e) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(e.message),
+              ),
+            );
+          }
         },
       ),
     ],

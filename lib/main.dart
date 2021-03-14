@@ -6,11 +6,13 @@ import 'package:new_e_commerce_app/Screens/Admin/add_products.dart';
 import 'package:new_e_commerce_app/Screens/Admin/admin_home.dart';
 import 'package:new_e_commerce_app/Screens/Admin/edit_product.dart';
 import 'package:new_e_commerce_app/Screens/Admin/manage_product.dart';
+import 'package:new_e_commerce_app/Screens/Admin/orders_screen.dart';
 import 'package:new_e_commerce_app/Screens/Admin/view_orders.dart';
 import 'package:new_e_commerce_app/Screens/User/home_page.dart';
 import 'package:new_e_commerce_app/Screens/User/product_info.dart';
 import 'package:provider/provider.dart';
 import 'package:new_e_commerce_app/Providers/model_hud.dart';
+import 'Screens/Admin/order_details.dart';
 import 'Screens/User/cart_screen.dart';
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
@@ -53,6 +55,8 @@ class MyApp extends StatelessWidget {
         EditProduct.id: (context) => EditProduct(),
         ProductInfo.id: (context) => ProductInfo(),
         CartScreen.id: (context) => CartScreen(),
+        OrdersScreen.id: (context) => OrdersScreen(),
+        OrderDetails.id: (context) => OrderDetails(),
       },
     );
   }

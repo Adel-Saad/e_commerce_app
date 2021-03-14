@@ -115,7 +115,15 @@ class CartScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               onPressed: () {
-                showCustomDialog(products, context);
+                if (products.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Cart is Empty'),
+                    ),
+                  );
+                } else {
+                  showCustomDialog(products, context);
+                }
               },
             ),
           ),

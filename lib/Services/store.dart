@@ -17,24 +17,28 @@ class Store {
     });
   }
 
+//.........................................................
   Stream<QuerySnapshot> loadProducts() {
     return _firestore.collection(kProductCollection).snapshots();
   }
 
+//.........................................................
   deleteProduct(documentID) async {
     await _firestore.collection(kProductCollection).doc(documentID).delete();
   }
 
+//.........................................................
   editProduct(productID, data) async {
     await _firestore.collection(kProductCollection).doc(productID).update(data);
   }
 
-  storeOrders(data, List<Product> products) {
+//.........................................................
+  storeOrders(data, List<Product> products) async {
     var documentRef = _firestore.collection(kOrdersCollection).doc();
     documentRef.set(data);
 
     for (var product in products) {
-      documentRef.collection(kOrderDetailsCollection).doc().set({
+      await documentRef.collection(kOrderDetailsCollection).doc().set({
         kProductName: product.pName,
         kProductPrice: product.pPrice,
         kProductLocation: product.pLocation,
@@ -43,5 +47,9 @@ class Store {
     }
   }
 
+//.........................................................
+  Stream<QuerySnapshot> loadOrders() {
+    return _firestore.collection(kOrdersCollection).snapshots();
+  }
 // ******************* CLASS END *****************************
 }

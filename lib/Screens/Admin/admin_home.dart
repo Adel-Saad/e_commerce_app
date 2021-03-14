@@ -4,6 +4,8 @@ import 'package:new_e_commerce_app/Screens/Admin/manage_product.dart';
 import 'package:new_e_commerce_app/Screens/Admin/view_orders.dart';
 import 'package:new_e_commerce_app/constants.dart';
 
+import 'orders_screen.dart';
+
 class AdminHome extends StatefulWidget {
   // props ...
   static String id = 'admin home';
@@ -38,7 +40,7 @@ class _AdminHomeState extends State<AdminHome> {
           RaisedButton(
             child: Text('View Orders'),
             onPressed: () {
-              Navigator.pushNamed(context, ViewOrders.id);
+              Navigator.pushNamed(context, OrdersScreen.id);
             },
           ),
         ],
